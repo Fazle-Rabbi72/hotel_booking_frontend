@@ -57,6 +57,7 @@ document.getElementById("deposit-form").addEventListener("submit", async functio
           const errorData = await response.json();
           alert(`Failed to deposit money: ${errorData.error || 'Unknown error'}`);
       }
+      location.reload();
   } catch (error) {
       console.error("Error during deposit:", error);
       alert("An error occurred while processing the deposit.");
