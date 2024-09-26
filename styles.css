@@ -266,7 +266,7 @@ nav {
 .service__container {
   padding-block: 3rem;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr); /* Two-column layout by default */
   gap: 3rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -279,6 +279,7 @@ nav {
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   text-align: center;
+  animation: fadeInUp 0.6s ease-out;
 }
 
 .service__list {
@@ -372,13 +373,48 @@ nav {
   }
 }
 
-.service__content {
-  animation: fadeInUp 0.6s ease-out;
-}
-
 .service__list li {
   animation: fadeInUp 0.8s ease-out;
   animation-delay: 0.2s;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .service__container {
+    grid-template-columns: 1fr; /* Switch to single-column layout on tablets */
+    gap: 2rem;
+  }
+
+  .service__content {
+    padding: 2rem; /* Reduce padding on smaller screens */
+  }
+
+  .service__list {
+    grid-template-columns: 1fr; /* List items in a single column */
+  }
+
+  .service__list li {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .service {
+    padding: 50px 0; /* Reduce top and bottom padding on mobile */
+  }
+
+  .service__content {
+    padding: 1.5rem; /* Further reduce padding on mobile */
+  }
+
+  .service__list span {
+    padding: 8px 12px; /* Adjust icon size on mobile */
+    font-size: 1.5rem;
+  }
+
+  .service__list li {
+    gap: 0.5rem; /* Reduce gap between text and icons */
+  }
 }
 
 
