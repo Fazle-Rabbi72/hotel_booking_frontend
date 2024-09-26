@@ -7,121 +7,138 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="../CSS/bookinghistory.css">
+    <link rel="stylesheet" href="../CSS/room.css">
+    <link rel="stylesheet" href="/styles.css">
     <title>Booking History</title>
-    <style>
-      .status-confirmed {
-        color: green;
-      }
-      .status-pending {
-        color: red;
-      }
-      .cancel-button {
-        cursor: pointer;
-      }
-    </style>
+    
   </head>
   <body>
-    <div class="container mt-5">
-      <h2 class="text-center">Your Booking History</h2>
-      <table class="table table-striped mt-4">
-        <thead>
-          <tr>
-            <th>Room Image</th>
-            <th>Check-in Date</th>
-            <th>Check-out Date</th>
-            <th>Guest Number</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody id="booking-history-table">
-          <!-- Bookings will be dynamically loaded here -->
-        </tbody>
-      </table>
-    </div>
+    
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top">
+          <div class="container">
+            <a class="navbar-brand" href="/"><img src="../assets/logo.png" alt="logo" class="logo" /></a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#service">Services</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#contact">Contact</a>
+                </li>
+                <li class="nav-item dropdown" id="profileDropdown" style="display: none;">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Profile
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="/HTML/profile.html">Profile</a></li>
+                    <li><a class="dropdown-item" href="#" id="logout">Logout</a></li>
+                    <li><a class="dropdown-item" href="/HTML/booking-history.html">Booking History</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item" id="loginItem">
+                  <button class="btn btn-secondary ms-2"><a href="/HTML/login.html">Login</a></button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
 
-    <script src="app.js"></script>
-    <script>
-      // Fetch booking data from the API
-      const userId = localStorage.getItem("user_id")
-      fetch(`http://127.0.0.1:8000/bookings/?user_id=${userId}`)
-        .then((response) => response.json())
-        .then((bookings) => {
-          const tableBody = document.getElementById('booking-history-table');
-          bookings.forEach((booking) => {
-            const row = document.createElement('tr');
 
-            // Room image
-            const roomImageCell = document.createElement('td');
-            const roomImage = document.createElement('img');
-            roomImage.src = booking.image;
-            roomImage.alt = 'Room Image';
-            roomImage.style.width = '100px';
-            roomImageCell.appendChild(roomImage);
-            row.appendChild(roomImageCell);
+      <div class="container mt-5">
+        <h2 class="text-center">Your Booking History</h2>
+        <!-- Delete All Bookings Button -->
+        
+        <table class="table table-striped mt-4">
+          <thead>
+            <tr>
+              <th>Room Image</th>
+              <th>Check-in Date</th>
+              <th>Check-out Date</th>
+              <th>Guest Number</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="booking-history-table">
+            <!-- Bookings will be dynamically loaded here -->
+          </tbody>
+        </table>
+      </div>
 
-            // Check-in date
-            const checkInCell = document.createElement('td');
-            checkInCell.textContent = booking.check_in_date;
-            row.appendChild(checkInCell);
 
-            // Check-out date
-            const checkOutCell = document.createElement('td');
-            checkOutCell.textContent = booking.check_out_date;
-            row.appendChild(checkOutCell);
 
-            // Guest number
-            const guestNumberCell = document.createElement('td');
-            guestNumberCell.textContent = booking.guest_number;
-            row.appendChild(guestNumberCell);
+      <footer class="bg-dark text-light py-5" id="contact">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3">
+              <a href="#home"><img src="../assets/logo.png" class="logo mb-3" alt="logo" /></a>
+              <p>
+                Discover a world of comfort, luxury, and adventure as you explore
+                our curated selection of hotels.
+              </p>
+            </div>
+            <div class="col-md-3">
+              <h5>Quick Links</h5>
+              <ul class="list-unstyled">
+                <li><a href="#">Rooms</a></li>
+                <li><a href="#">Bookings</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">FAQs</a></li>
+              </ul>
+            </div>
+            <div class="col-md-3">
+              <h5>Contact Us</h5>
+              <ul class="list-unstyled">
+                <li><i class="ri-map-pin-line"></i> Dhaka, Bangladesh</li>
+                <li><i class="ri-mail-line"></i> info@rayalpark.com</li>
+                <li><i class="ri-phone-line"></i> +880123456789</li>
+              </ul>
+            </div>
+            <div class="col-md-3">
+              <h5>Follow Us</h5>
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <a href="#" class="text-light"><i class="ri-facebook-circle-fill"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="text-light"><i class="ri-instagram-fill"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="text-light"><i class="ri-twitter-fill"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="text-light"><i class="ri-youtube-fill"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>  
 
-            // Status
-            const statusCell = document.createElement('td');
-            statusCell.textContent = booking.status;
-            if (booking.status === 'Confirmed') {
-              statusCell.classList.add('status-confirmed');
-            } else if (booking.status === 'Pending') {
-              statusCell.classList.add('status-pending');
-            }
-            row.appendChild(statusCell);
-
-            // Action (Cancel button)
-            const actionCell = document.createElement('td');
-            const cancelButton = document.createElement('button');
-            cancelButton.textContent = 'Cancel';
-            cancelButton.classList.add('btn', 'btn-danger', 'cancel-button');
-            if (booking.status === 'Confirmed') {
-              cancelButton.disabled = true;
-            } else {
-              cancelButton.onclick = () => cancelBooking(booking.id);
-            }
-            actionCell.appendChild(cancelButton);
-            row.appendChild(actionCell);
-
-            // Append row to table
-            tableBody.appendChild(row);
-          });
-        })
-        .catch((error) => console.error('Error fetching bookings:', error));
-
-      // Function to cancel a booking
-      function cancelBooking(bookingId) {
-        fetch(`http://127.0.0.1:8000/bookings/`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        })
-          .then((response) => {
-            if (response.ok) {
-              alert('Booking cancelled successfully!');
-              location.reload();
-            } else {
-              alert('Failed to cancel booking.');
-            }
-          })
-          .catch((error) => console.error('Error cancelling booking:', error));
-      }
-    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    ></script>
+    <script src="/app.js"></script>
+    <script src="../JS/bookinghistory.js"></script>
   </body>
 </html>

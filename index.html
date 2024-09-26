@@ -41,8 +41,6 @@
               <li class="nav-item">
                 <a class="nav-link" href="#service">Services</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#explore">Explore</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#contact">Contact</a>
@@ -112,10 +110,17 @@
     <section class="container room__container my-5" id="rooms-section">
       <p class="text-center section__subheader">OUR LIVING ROOM</p>
       <h2 class="text-center section__header">The Most Memorable Rest Time Starts Here.</h2>
+      
       <div id="rooms-list" class="row g-4 mt-4">
         <!-- Rooms will be dynamically loaded here -->
       </div>
+    
+      <!-- Pagination Controls -->
+      <div id="pagination-controls" class="d-flex justify-content-center mt-4">
+        <!-- Pagination buttons will be dynamically generated here -->
+      </div>
     </section>
+    
     
 
     <section class="service bg-light py-5" id="service">
@@ -147,17 +152,7 @@
 
     
 
-    <section class="explore py-5 text-center" id="explore">
-      <p class="section__subheader">EXPLORE</p>
-      <h2>What's New Today.</h2>
-      <div class="explore_bg">
-        <div class="explore__content py-5">
-            <p>10th MAR 2023</p>
-            <h4>A New Menu Is Available In Our Hotel.</h4>
-            <button class="btn btn-primary mt-3">Continue</button>
-          </div>
-      </div>
-    </section>
+    
     <section class="reviews py-5" id="reviews">
       <p class="section__subheader text-center">REVIEWS</p>
       <h2 class="section__header text-center">What Our Guests Say</h2>
@@ -175,6 +170,34 @@
         </button>
       </div>
     </section>
+
+
+    <section class="container my-5 p-4 shadow-sm rounded" id="contact-us" style="background-color: #f7f7f7;">
+      <h2 class="text-center section__header mb-4" style="color: #343a40;">Get In Touch</h2>
+      <p class="text-center text-muted mb-4">We’d love to hear from you! Let us know your concerns or feedback.</p>
+      
+      <form id="contact-form" class="row g-4">
+        <div class="col-md-6">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control form-control-lg" id="name" placeholder="Your Full Name" required>
+        </div>
+        <div class="col-md-6">
+          <label for="phone" class="form-label">Phone</label>
+          <input type="tel" class="form-control form-control-lg" id="phone" placeholder="Your Phone Number" required>
+        </div>
+        <div class="col-12">
+          <label for="problem" class="form-label">How can we help?</label>
+          <textarea class="form-control form-control-lg" id="problem" rows="5" placeholder="Describe your issue..." required></textarea>
+        </div>
+        <div class="col-12 text-center">
+          <button type="submit" class="btn btn-primary btn-lg px-5">Submit</button>
+        </div>
+      </form>
+      
+      <div id="contact-feedback" class="text-center mt-3"></div>
+    </section>
+    
+    
     
     <footer class="bg-dark text-light py-5" id="contact">
       <div class="container">

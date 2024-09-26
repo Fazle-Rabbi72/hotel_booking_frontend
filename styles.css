@@ -705,3 +705,89 @@ nav {
 .text-warning {
   color: #ffc107; /* Bootstrap warning color */
 }
+
+/* pagination */
+/* Pagination Controls */
+#pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#pagination-controls button {
+  background-color: #6c757d; /* Secondary color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 5px;
+  font-size: 16px;
+  border-radius: 50px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+#pagination-controls button:hover {
+  background-color: #5a6268; /* Slightly darker for hover */
+  transform: translateY(-3px);
+}
+
+#pagination-controls button:disabled {
+  background-color: #b0b0b0; /* Disabled state color */
+  cursor: not-allowed;
+}
+
+#pagination-controls span {
+  margin: 0 15px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+/* 
+Contact Us Section */
+ #contact-us {
+  border-radius: 10px;
+  background-color: #f8cef2;
+}
+
+.section__header {
+  font-weight: 700;
+  color: #343a40;
+}
+
+#contact-form .form-control {
+  border: 2px solid #dee2e6;
+  padding: 15px;
+  font-size: 16px;
+}
+
+#contact-form .form-control:focus {
+  border-color: #007bff;
+  box-shadow: none;
+}
+
+/* Button Styling */
+#contact-form .btn-primary {
+  background-color: #007bff;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+#contact-form .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Feedback Message Styling */
+#contact-feedback {
+  font-size: 16px;
+}
+
+.text-success {
+  color: #28a745;
+}
+
+.text-danger {
+  color: #dc3545;
+}
+

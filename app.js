@@ -1,38 +1,77 @@
 document.addEventListener("DOMContentLoaded", () => {
   const roomsList = document.getElementById("rooms-list");
+  const paginationControls = document.getElementById("pagination-controls");
+  let currentPage = 1;
+  const itemsPerPage = 30;
 
-  // Fetch rooms from the API
-  fetch("http://127.0.0.1:8000/rooms/")
-    .then((response) => response.json())
-    .then((rooms) => {
-      // Clear any existing rooms (if needed)
-      roomsList.innerHTML = "";
+  // Function to fetch rooms based on the current page
+  const fetchRooms = (page) => {
+    fetch(`http://127.0.0.1:8000/rooms/?page=${page}&limit=${itemsPerPage}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const rooms = data.results; // Assuming the API returns a 'results' field for the rooms
+        const totalRooms = data.count; // Assuming the API returns a 'count' for the total rooms
 
-      // Loop through the rooms and create HTML elements for each
-      rooms.forEach((room) => {
-        const roomCard = `
-             <div class="col-md-4">
-              <div class="card room__card">
-                <img src="${room.image}" class="card-img-top" alt="${room.name}" />
-                <div class="card-body">
-                  <h5 class="card-title">${room.room_type}</h5>
-                  <h6>Starting from <span>$${room.price_per_night}/night</span></h6>
-                  <div class="d-flex justify-content-between mt-2">
-                    <a href="../HTML/roomDetails.html?room_id=${room.id}" class="btn btn-secondary w-50">Details</a>
+        // Clear the existing rooms
+        roomsList.innerHTML = "";
+
+        // Loop through the rooms and create HTML elements for each
+        rooms.forEach((room) => {
+          const roomCard = `
+               <div class="col-md-4">
+                <div class="card room__card">
+                  <img src="${room.image}" class="card-img-top" alt="${room.name}" />
+                  <div class="card-body">
+                    <h5 class="card-title">${room.room_type}</h5>
+                    <h6>Starting from <span>$${room.price_per_night}/night</span></h6>
+                    <div class="d-flex justify-content-between mt-2">
+                      <a href="../HTML/roomDetails.html?room_id=${room.id}" class="btn btn-secondary w-50">Details</a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          `;
+            `;
+          // Append the room card to the rooms list
+          roomsList.innerHTML += roomCard;
+        });
 
-        // Append the room card to the rooms list
-        roomsList.innerHTML += roomCard;
+        // Update pagination controls
+        const totalPages = Math.ceil(totalRooms / itemsPerPage);
+        updatePaginationControls(totalPages);
+      })
+      .catch((error) => {
+        console.error("Error fetching rooms:", error);
       });
-    })
-    .catch((error) => {
-      console.error("Error fetching rooms:", error);
+  };
+
+  // Function to update the pagination buttons
+  const updatePaginationControls = (totalPages) => {
+    paginationControls.innerHTML = `
+      <button id="prev-btn" class="btn btn-secondary" ${currentPage === 1 ? "disabled" : ""}>Previous</button>
+      <span> Page ${currentPage} of ${totalPages} </span>
+      <button id="next-btn" class="btn btn-secondary" ${currentPage === totalPages ? "disabled" : ""}>Next</button>
+    `;
+
+    // Add event listeners for pagination buttons
+    document.getElementById("prev-btn").addEventListener("click", () => {
+      if (currentPage > 1) {
+        currentPage--;
+        fetchRooms(currentPage);
+      }
     });
+
+    document.getElementById("next-btn").addEventListener("click", () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        fetchRooms(currentPage);
+      }
+    });
+  };
+
+  // Initial fetch for the first page
+  fetchRooms(currentPage);
 });
+
 
 // for handaling nav for logged in user
 document.addEventListener("DOMContentLoaded", () => {
@@ -200,4 +239,54 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+// contact us 
+document.addEventListener("DOMContentLoaded", () => {
+  const contactForm = document.getElementById("contact-form");
+  const feedbackElement = document.getElementById("contact-feedback");
+
+  contactForm.addEventListener("submit", (e) => {
+    e.preventDefault(); // Prevent form from submitting the traditional way
+
+    // Gather form data
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const problem = document.getElementById("problem").value;
+
+    // Create the request body
+    const formData = {
+      name: name,
+      phone: phone,
+      problem: problem,
+    };
+
+    // Send the data to the server
+    fetch("http://127.0.0.1:8000/contact_us/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data) {
+          // Display success message
+          feedbackElement.textContent = "Thank you for contacting us. We will get back to you soon!";
+          feedbackElement.classList.add("text-success");
+        } else {
+          // Display error message
+          feedbackElement.textContent = "Something went wrong. Please try again.";
+          feedbackElement.classList.add("text-danger");
+        }
+
+        // Clear form fields
+        contactForm.reset();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        feedbackElement.textContent = "There was an error sending your message. Please try again.";
+        feedbackElement.classList.add("text-danger");
+      });
+  });
+});
 
