@@ -107,7 +107,7 @@ const roomBooking = (event) => {
         })
         .then((data) => {
           console.log("Booking successful:", data);
-          alert("Booking successful!");
+          alert("Your booking is currently pending. Please wait for confirmation");
           location.reload();
         })
         .catch((error) => {

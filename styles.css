@@ -73,6 +73,37 @@ body {
   cursor: pointer;
   transition: 0.3s;
 }
+.button{
+  padding: 0.30rem 1rem;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--white);
+  background-color: whitesmoke;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+/* Animate the icon on hover */
+.btn:hover .icon {
+  transform: translateX(5px); /* Slide icon to the right */
+  transition: transform 0.3s ease-in-out; /* Smooth transition */
+}
+/* Bounce animation */
+.btn:hover .icon {
+  animation: bounce 0.6s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
 
 .btn:hover {
   background-color: var(--primary-color-dark);

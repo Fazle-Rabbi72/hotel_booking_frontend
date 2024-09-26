@@ -11,6 +11,7 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css" />
     <title>Nature's Paradise</title>
   </head>
@@ -47,8 +48,8 @@
               </li>
               <li class="nav-item dropdown" id="profileDropdown" style="display: none;">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Profile
-                </a>
+                  <i class="fa-solid fa-circle-user fa-2xl"></i>              
+                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                   <li><a class="dropdown-item" href="/HTML/profile.html">Profile</a></li>
                   <li><a class="dropdown-item" href="#" id="logout">Logout</a></li>
@@ -56,7 +57,12 @@
                 </ul>
               </li>
               <li class="nav-item" id="loginItem">
-                <button class="btn btn-secondary ms-2"><a href="/HTML/login.html">Login</a></button>
+                <button class="btn button btn-secondary ms-2">
+                  <a style="color: black;" href="/HTML/login.html">
+                    <i class="fa-solid fa-right-to-bracket icon" style="color: black;"></i> Login
+                  </a>
+                </button>
+                
               </li>
             </ul>
           </div>

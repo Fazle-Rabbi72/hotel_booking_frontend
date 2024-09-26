@@ -47,9 +47,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // Function to update the pagination buttons
   const updatePaginationControls = (totalPages) => {
     paginationControls.innerHTML = `
-      <button id="prev-btn" class="btn btn-secondary" ${currentPage === 1 ? "disabled" : ""}>Previous</button>
+      <button id="prev-btn" class="btn btn-secondary" ${
+        currentPage === 1 ? "disabled" : ""
+      }>Previous</button>
       <span> Page ${currentPage} of ${totalPages} </span>
-      <button id="next-btn" class="btn btn-secondary" ${currentPage === totalPages ? "disabled" : ""}>Next</button>
+      <button id="next-btn" class="btn btn-secondary" ${
+        currentPage === totalPages ? "disabled" : ""
+      }>Next</button>
     `;
 
     // Add event listeners for pagination buttons
@@ -71,7 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initial fetch for the first page
   fetchRooms(currentPage);
 });
-
 
 // for handaling nav for logged in user
 document.addEventListener("DOMContentLoaded", () => {
@@ -102,14 +105,14 @@ document.addEventListener("DOMContentLoaded", () => {
 // for searching available room for booking .........
 const searchRoom = (event) => {
   event.preventDefault();
-  
+
   // Get the check-in and check-out dates from the form
   const check_in_date = document.getElementById("check-in").value;
   const check_out_date = document.getElementById("check-out").value;
-  
+
   // Log the dates (for debugging purposes)
   console.log(check_in_date, check_out_date);
-  
+
   // Create the payload for the POST request
   const info = {
     check_in_date: check_in_date,
@@ -167,23 +170,24 @@ const searchRoom = (event) => {
         });
       } else {
         // Display a message if no rooms are available
-        roomsList.innerHTML = "<p class='text-center'>No rooms available for the selected dates.</p>";
+        roomsList.innerHTML =
+          "<p class='text-center'>No rooms available for the selected dates.</p>";
       }
     })
     .catch((error) => {
       console.error("Error checking room availability:", error);
       alert("There was an error checking room availability. Please try again.");
     });
-    const roomContainer = document.getElementById('rooms-section');
-    if (roomContainer) {
-        roomContainer.scrollIntoView({ behavior: 'smooth' });  // Smooth scroll
-    } else {
-        console.error('Element with ID "rooms-section" not found.');
-    }
+  const roomContainer = document.getElementById("rooms-section");
+  if (roomContainer) {
+    roomContainer.scrollIntoView({ behavior: "smooth" }); // Smooth scroll
+  } else {
+    console.error('Element with ID "rooms-section" not found.');
+  }
 };
 
 // for reviews
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   const reviewsContainer = document.getElementById("reviews-container");
 
   // Assuming the token is stored in localStorage after login
@@ -192,8 +196,8 @@ document.addEventListener("DOMContentLoaded", function() {
   // Fetch reviews from the API with authentication
   fetch("http://127.0.0.1:8000/reviews/", {
     headers: {
-      "Authorization": `Token ${token}` // Send the token in the Authorization header
-    }
+      Authorization: `Token ${token}`, // Send the token in the Authorization header
+    },
   })
     .then((response) => {
       if (!response.ok) {
@@ -239,7 +243,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-// contact us 
+// contact us
 document.addEventListener("DOMContentLoaded", () => {
   const contactForm = document.getElementById("contact-form");
   const feedbackElement = document.getElementById("contact-feedback");
@@ -271,11 +275,13 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((data) => {
         if (data) {
           // Display success message
-          feedbackElement.textContent = "Thank you for contacting us. We will get back to you soon!";
+          feedbackElement.textContent =
+            "Thank you for contacting us. We will get back to you soon!";
           feedbackElement.classList.add("text-success");
         } else {
           // Display error message
-          feedbackElement.textContent = "Something went wrong. Please try again.";
+          feedbackElement.textContent =
+            "Something went wrong. Please try again.";
           feedbackElement.classList.add("text-danger");
         }
 
@@ -284,9 +290,9 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch((error) => {
         console.error("Error:", error);
-        feedbackElement.textContent = "There was an error sending your message. Please try again.";
+        feedbackElement.textContent =
+          "There was an error sending your message. Please try again.";
         feedbackElement.classList.add("text-danger");
       });
   });
 });
-
