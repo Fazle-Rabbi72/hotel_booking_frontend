@@ -32,7 +32,7 @@ const handelRegistration = (event) => {
           console.log("data", data);
           if (data.token && data.uid) {
             // Redirect to the verification page
-            window.location.href = `http://127.0.0.1:5500/HTML/verifyUser.html?uid=${data.uid}&token=${data.token}`;
+            window.location.href = `https://natures-paradise.netlify.app/HTML/verifyUser.html?uid=${data.uid}&token=${data.token}`;
           } else {
             document.getElementById("error").innerText = data.message;
           }
