@@ -76,7 +76,7 @@ document
     const lastName = document.getElementById("edit-last-name").value;
     const email = document.getElementById("edit-email").value;
     const userId = localStorage.getItem("user_id");
-    const token = localStorage.getItem("token"); // Fetch token from localStorage
+    const token = localStorage.getItem("token");
 
     console.log({ username, firstName, lastName, email });
     try {
@@ -84,7 +84,7 @@ document
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Token ${token}`,  // Use the correct format for token
+          "Authorization": `Token ${token}`, 
         },
         body: JSON.stringify({
           username: username,

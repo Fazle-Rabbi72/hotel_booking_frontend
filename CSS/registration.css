@@ -8,7 +8,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 100px; /* Adjust for navbar height */
+    padding-top: 100px; 
   }
   .register-container {
     max-width: 500px;

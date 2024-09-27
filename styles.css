@@ -1,4 +1,4 @@
-/* Additional Custom Styles */
+
 body {
     scroll-behavior: smooth;
   }
@@ -193,7 +193,7 @@ nav {
 }
 
 .room__card:hover {
-  transform: scale(1.05); /* Slight zoom on hover */
+  transform: scale(1.05); 
 }
 
 .room__card img {
@@ -203,7 +203,7 @@ nav {
 }
 
 .room__card:hover img {
-  transform: scale(1.1); /* Image zooms in slightly on hover */
+  transform: scale(1.1); 
 }
 
 .room__info {
@@ -412,39 +412,39 @@ nav {
 /* Responsive Design */
 @media (max-width: 992px) {
   .service__container {
-    grid-template-columns: 1fr; /* Switch to single-column layout on tablets */
+    grid-template-columns: 1fr; 
     gap: 2rem;
   }
 
   .service__content {
-    padding: 2rem; /* Reduce padding on smaller screens */
+    padding: 2rem;
   }
 
   .service__list {
-    grid-template-columns: 1fr; /* List items in a single column */
+    grid-template-columns: 1fr;
   }
 
   .service__list li {
-    font-size: 1rem; /* Adjust font size for smaller screens */
+    font-size: 1rem; 
   }
 }
 
 @media (max-width: 576px) {
   .service {
-    padding: 50px 0; /* Reduce top and bottom padding on mobile */
+    padding: 50px 0;
   }
 
   .service__content {
-    padding: 1.5rem; /* Further reduce padding on mobile */
+    padding: 1.5rem; 
   }
 
   .service__list span {
-    padding: 8px 12px; /* Adjust icon size on mobile */
+    padding: 8px 12px; 
     font-size: 1.5rem;
   }
 
   .service__list li {
-    gap: 0.5rem; /* Reduce gap between text and icons */
+    gap: 0.5rem; 
   }
 }
 
@@ -727,7 +727,7 @@ nav {
 
 /* reviews section */
 .reviews {
-  background-color:white; /* Light background for the reviews section */
+  background-color:white;
   padding: 50px 0;
 }
 
@@ -739,7 +739,7 @@ nav {
 }
 
 .review__card:hover {
-  transform: scale(1.05); /* Scale effect on hover */
+  transform: scale(1.05); 
 }
 
 .review__card .card-body {
@@ -756,25 +756,25 @@ nav {
 
 .section__subheader {
   font-size: 1.5rem;
-  color: #6c757d; /* Gray color */
+  color: #6c757d; 
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  background-color: #521b1b; /* Customize carousel control icons */
+  background-color: #521b1b;
   border-radius: 50%;
 }
 
 .carousel-inner {
-  margin-bottom: 30px; /* Space below the carousel */
+  margin-bottom: 30px; 
 }
 
 .text-warning {
-  color: #ffc107; /* Bootstrap warning color */
+  color: #ffc107; 
 }
 
 /* pagination */
-/* Pagination Controls */
+
 #pagination-controls {
   display: flex;
   justify-content: center;
@@ -783,8 +783,7 @@ nav {
 }
 
 #pagination-controls button {
-  background-color: #6c757d; /* Secondary color */
-  color: white;
+  background-color: #6c757d; 
   border: none;
   padding: 10px 20px;
   margin: 0 5px;
@@ -796,12 +795,12 @@ nav {
 }
 
 #pagination-controls button:hover {
-  background-color: #5a6268; /* Slightly darker for hover */
+  background-color: #e74210; 
   transform: translateY(-3px);
 }
 
 #pagination-controls button:disabled {
-  background-color: #b0b0b0; /* Disabled state color */
+  background-color: #f50b0b; 
   cursor: not-allowed;
 }
 
@@ -845,7 +844,7 @@ Contact Us Section */
   background-color: #0056b3;
 }
 
-/* Feedback Message Styling */
+
 #contact-feedback {
   font-size: 16px;
 }
@@ -858,9 +857,24 @@ Contact Us Section */
   color: #dc3545;
 }
 
-#profile-pic{
-  width: 200px;
-  height: 200px;
-  margin-left: 190px;
+#profile-pic {
+  width: 100%;
+  max-width: 200px;
+  height: auto; 
+  margin: 0 auto; 
 }
+
+@media (min-width: 768px) {
+  #profile-pic {
+    margin-left: 0; 
+  }
+}
+
+@media (min-width: 992px) {
+  #profile-pic {
+    max-width: 200px;
+    margin-left: 190px;
+  }
+}
+
 

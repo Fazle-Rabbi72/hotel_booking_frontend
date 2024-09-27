@@ -4,23 +4,22 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentPage = 1;
   const itemsPerPage = 18;
 
-  // Function to fetch rooms based on the current page
   const fetchRooms = (page) => {
-    fetch(`https://natures-paradise-stlb.onrender.com/rooms/?page=${page}&limit=${itemsPerPage}`)
+    fetch(
+      `https://natures-paradise-stlb.onrender.com/rooms/?page=${page}&limit=${itemsPerPage}`
+    )
       .then((response) => response.json())
       .then((data) => {
-        const rooms = data.results; // Assuming the API returns a 'results' field for the rooms
-        const totalRooms = data.count; // Assuming the API returns a 'count' for the total rooms
+        const rooms = data.results;
+        const totalRooms = data.count;
 
-        // Clear the existing rooms
         roomsList.innerHTML = "";
 
-        // Loop through the rooms and create HTML elements for each
         rooms.forEach((room) => {
           const roomCard = `
                <div class="col-md-4">
                 <div class="card room__card">
-                  <img src="${room.image}" class="card-img-top" alt="${room.name}" />
+                  <img src="${room.image}" class="card-img-top" alt="${room.room_type}" />
                   <div class="card-body">
                     <h5 class="card-title">${room.room_type}</h5>
                     <h6>Starting from <span>$${room.price_per_night}/night</span></h6>
@@ -31,11 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
               </div>
             `;
-          // Append the room card to the rooms list
+
           roomsList.innerHTML += roomCard;
         });
 
-        // Update pagination controls
         const totalPages = Math.ceil(totalRooms / itemsPerPage);
         updatePaginationControls(totalPages);
       })
@@ -44,7 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   };
 
-  // Function to update the pagination buttons
   const updatePaginationControls = (totalPages) => {
     paginationControls.innerHTML = `
       <button id="prev-btn" class="btn btn-secondary" ${
@@ -56,7 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }>Next</button>
     `;
 
-    // Add event listeners for pagination buttons
     document.getElementById("prev-btn").addEventListener("click", () => {
       if (currentPage > 1) {
         currentPage--;
@@ -72,31 +68,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // Initial fetch for the first page
   fetchRooms(currentPage);
 });
 
-// for handaling nav for logged in user
 document.addEventListener("DOMContentLoaded", () => {
   const profileDropdown = document.getElementById("profileDropdown");
   const loginItem = document.getElementById("loginItem");
 
-  // Check if the user is logged in
   const token = localStorage.getItem("token");
 
   if (token) {
-    // User is logged in
-    profileDropdown.style.display = "block"; // Show profile dropdown
-    loginItem.style.display = "none"; // Hide login button
+    profileDropdown.style.display = "block";
+    loginItem.style.display = "none";
   } else {
-    // User is not logged in
-    profileDropdown.style.display = "none"; // Hide profile dropdown
-    loginItem.style.display = "block"; // Show login button
+    profileDropdown.style.display = "none";
+    loginItem.style.display = "block";
   }
 
   // Logout functionality
   document.getElementById("logout").addEventListener("click", () => {
-    // Clear local storage and redirect to login
     localStorage.removeItem("token");
     localStorage.removeItem("user_id");
     window.location.href = "/index.html";
@@ -113,7 +103,6 @@ const searchRoom = (event) => {
   // Log the dates (for debugging purposes)
   console.log(check_in_date, check_out_date);
 
-  // Create the payload for the POST request
   const info = {
     check_in_date: check_in_date,
     check_out_date: check_out_date,
@@ -125,30 +114,28 @@ const searchRoom = (event) => {
     return;
   }
 
-  // Send the POST request to the check availability API
-  fetch("https://natures-paradise-stlb.onrender.com/rooms/check_availability/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(info),
-  })
+  fetch(
+    "https://natures-paradise-stlb.onrender.com/rooms/check_availability/",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(info),
+    }
+  )
     .then((response) => response.json())
     .then((data) => {
       const roomsList = document.getElementById("rooms-list");
 
-      // Handle any errors from the API
       if (data.error) {
         alert(data.error);
         return;
       }
 
-      // Clear any previous room listings
       roomsList.innerHTML = "";
 
-      // Check if any rooms are available
       if (data.length > 0) {
-        // Loop through available rooms and display them
         data.forEach((room) => {
           const roomCard = `
             <div class="col-md-4">
@@ -165,11 +152,9 @@ const searchRoom = (event) => {
             </div>
           `;
 
-          // Append the room card to the room list
           roomsList.innerHTML += roomCard;
         });
       } else {
-        // Display a message if no rooms are available
         roomsList.innerHTML =
           "<p class='text-center'>No rooms available for the selected dates.</p>";
       }
@@ -180,7 +165,7 @@ const searchRoom = (event) => {
     });
   const roomContainer = document.getElementById("rooms-section");
   if (roomContainer) {
-    roomContainer.scrollIntoView({ behavior: "smooth" }); // Smooth scroll
+    roomContainer.scrollIntoView({ behavior: "smooth" });
   } else {
     console.error('Element with ID "rooms-section" not found.');
   }

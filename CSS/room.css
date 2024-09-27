@@ -14,12 +14,12 @@ body {
   border-radius: 15px;
   overflow: hidden;
   background-color: #fff;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Light shadow */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
 }
 
 .room-detail-card:hover {
-  transform: translateY(-15px); /* Lift the card slightly on hover */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+  transform: translateY(-15px); 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); 
 }
 
 .room-detail-card img {
@@ -31,7 +31,7 @@ body {
 }
 
 .room-detail-card:hover img {
-  transform: scale(1.1); /* Image zoom on hover */
+  transform: scale(1.1);
 }
 
 .room-detail-card .card-body {
@@ -41,7 +41,7 @@ body {
 }
 
 .room-detail-card:hover .card-body {
-  background-color: #e9ecef; /* Slight color change on hover */
+  background-color: #e9ecef; 
 }
 
 .room-detail-card h5 {
@@ -65,22 +65,22 @@ body {
   color: #fff;
   background-color: #007bff;
   border: none;
-  border-radius: 50px; /* Rounded button */
+  border-radius: 50px; 
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .room-detail-card .btn-primary:hover {
   background-color: #0056b3;
-  transform: translateY(-5px); /* Lift button slightly on hover */
+  transform: translateY(-5px); 
 }
 
 .room-detail-card .btn-primary:focus {
   outline: none;
-  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25); /* Add focus shadow */
+  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
 }
 
 .room-detail-card .btn-primary:active {
-  transform: translateY(2px); /* Pressed effect on click */
+  transform: translateY(2px); 
 }
 
 @keyframes fadeIn {
@@ -95,7 +95,7 @@ body {
 }
 
 .room-detail-card .card-body {
-  animation: fadeIn 0.5s ease-in-out; /* Fade-in animation for the card content */
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 
@@ -143,32 +143,73 @@ body {
   }
   
 
+  .container {
+    max-width: 900px;
+  }
 
-  .review-slide {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
+  h2 {
+    margin-bottom: 30px;
+  }
 
-.review-card {
+  /* Review Card Styles */
+  .card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
     background-color: #f8f9fa;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    flex: 1;
-}
+  }
 
-.rating {
-    font-size: 20px;
-    color: #f5c518;
-}
+  .card:hover {
+    transform: translateY(-5px);
+  }
 
-.reviewer-name {
-    font-weight: bold;
-    margin-top: 10px;
-}
+  .card-body {
+    padding: 20px;
+  }
 
-.review-date {
-    font-size: 12px;
+  .card-title {
+    font-weight: 700;
+    color: #343a40;
+  }
+
+  .card-text {
+    font-size: 15px;
     color: #6c757d;
-}
+  }
+
+  .card .btn-link {
+    color: #007bff;
+    text-decoration: underline;
+  }
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* Custom Control Button Hover Effect */
+  .carousel-control-prev-icon:hover,
+  .carousel-control-next-icon:hover {
+    background-color: #007bff;
+  }
+
+  .carousel-control-prev {
+    left: -60px;
+  }
+
+  .carousel-control-next {
+    right: -60px;
+  }
+
+
+

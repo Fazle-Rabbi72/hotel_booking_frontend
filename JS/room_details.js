@@ -48,12 +48,13 @@ const roomDetails = () => {
     document.getElementById("room-details").innerText = "Room ID not found.";
   }
 };
+
 // room booking
 
 const roomBooking = (event) => {
   event.preventDefault();
 
-  // Fetch the token and user_id from localStorage
+  
 
   const user = localStorage.getItem("user_id");
 
@@ -70,7 +71,7 @@ const roomBooking = (event) => {
       const check_out = document.getElementById("check-out").value;
       const guest = document.getElementById("guest-number").value;
 
-      // Calculate nights and total price
+     
       const nights =
         (new Date(check_out) - new Date(check_in)) / (1000 * 60 * 60 * 24);
       const totalPrice = price_per_night * nights;
@@ -85,12 +86,12 @@ const roomBooking = (event) => {
         status: "Pending",
       };
 
-      // Make the booking API request
+     
       fetch("https://natures-paradise-stlb.onrender.com/bookings/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Token ${token}`, // Correctly pass the token here
+          Authorization: `Token ${token}`,
         },
         body: JSON.stringify(bookingData),
       })
@@ -98,7 +99,7 @@ const roomBooking = (event) => {
           console.log("response", response);
           if (!response.ok) {
             return response.json().then((errorData) => {
-              // Show the error message in an alert
+           
               alert(errorData.error || "An error occurred while booking.");
               throw new Error("Failed to create booking");
             });
@@ -107,7 +108,9 @@ const roomBooking = (event) => {
         })
         .then((data) => {
           console.log("Booking successful:", data);
-          alert("Your booking is currently pending. Please wait for confirmation");
+          alert(
+            "Your booking is currently pending. Please wait for confirmation"
+          );
           location.reload();
         })
         .catch((error) => {
@@ -129,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Token ${token}`, // Correctly pass the token here
+      Authorization: `Token ${token}`, 
     },
   })
     .then((response) => response.json())
@@ -165,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class="card-body">
             <h5 class="card-title">${review.user_name}</h5>
             <p class="card-text">${review.comment}</p>
-            <p class="card-text"><small class="text-muted">Rating: ${review.rating}/5</small></p>
+            <p class="card-text"><small class="text-muted">Rating: ${review.rating}</small></p>
           </div>
         </div>
       </div>
@@ -186,48 +189,50 @@ const reviewSubmit = (event) => {
   const token = localStorage.getItem("token");
   function fetchReviews() {
     fetch(reviewsEndpoint)
-        .then(response => response.json())
-        .then(data => {
-            createReviewCard(data);
-        })
-        .catch(error => {
-            console.error('Error fetching reviews:', error);
-        });
-}
-  // Ensure roomId is valid before proceeding
+      .then((response) => response.json())
+      .then((data) => {
+        createReviewCard(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching reviews:", error);
+      });
+  }
+ 
   if (!roomId) {
-    alert("Room ID is missing from the URL. Cannot submit review.")
+    alert("Room ID is missing from the URL. Cannot submit review.");
     return;
   }
-  if(!token){
-    alert("You are not allowed to submit a review as you haven't confirmed a booking.")
+  if (!token) {
+    alert(
+      "You are not allowed to submit a review as you haven't confirmed a booking."
+    );
   }
 
   const formData = new FormData(reviewForm);
   const rating = formData.get("rating");
   const comment = formData.get("comment");
 
-  // Check if the user is allowed to submit a review
+ 
   if (!userHasConfirmedBooking) {
-    
-      alert("You are not allowed to submit a review as you haven't confirmed a booking.",)
-    
+    alert(
+      "You are not allowed to submit a review as you haven't confirmed a booking."
+    );
     return;
   }
-
-  // Prepare the review data
+  location.reload();
+ 
   const reviewData = {
     room: roomId,
     rating: rating,
     comment: comment,
   };
 
-  // Post the review to the server
+ 
   fetch(submitReviewEndpoint, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Token ${token}`, // Corrected the header
+      Authorization: `Token ${token}`,
     },
     body: JSON.stringify(reviewData),
   })
@@ -237,13 +242,10 @@ const reviewSubmit = (event) => {
       console.log("data", data);
       if (data.id) {
         alert("Review submitted successfully!");
-        fetchReviews(); // Refresh the reviews list
-        reviewForm.reset(); // Reset the form
-      }
-      else
-      {
+        fetchReviews(); 
+        reviewForm.reset();
+      } else {
         alert(data[0]);
       }
-    })
-    
+    });
 };
