@@ -4,7 +4,7 @@ const roomDetails = () => {
   console.log(param);
   if (param) {
     // Fetch room details from the API
-    fetch(`http://127.0.0.1:8000/rooms/${param}/`)
+    fetch(`https://natures-paradise-stlb.onrender.com/rooms/${param}/`)
       .then((response) => response.json())
       .then((room) => {
         // Create HTML to display room details
@@ -59,7 +59,7 @@ const roomBooking = (event) => {
 
   const param = new URLSearchParams(window.location.search).get("room_id");
 
-  fetch(`http://127.0.0.1:8000/rooms/${param}/`)
+  fetch(`https://natures-paradise-stlb.onrender.com/rooms/${param}/`)
     .then((res) => res.json())
     .then((data) => {
       const price_per_night = data.price_per_night;
@@ -86,7 +86,7 @@ const roomBooking = (event) => {
       };
 
       // Make the booking API request
-      fetch("http://127.0.0.1:8000/bookings/", {
+      fetch("https://natures-paradise-stlb.onrender.com/bookings/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -122,7 +122,7 @@ roomDetails();
 
 document.addEventListener("DOMContentLoaded", function () {
   const roomId = new URLSearchParams(window.location.search).get("room_id");
-  const reviewsApiUrl = `http://127.0.0.1:8000/reviews/?room_id=${roomId}`;
+  const reviewsApiUrl = `https://natures-paradise-stlb.onrender.com/reviews/?room_id=${roomId}`;
   const token = localStorage.getItem("token");
   // Fetch and display reviews
   fetch(reviewsApiUrl, {
@@ -178,10 +178,10 @@ const reviewSubmit = (event) => {
   event.preventDefault();
 
   const userHasConfirmedBooking = true;
-  const submitReviewEndpoint = `http://127.0.0.1:8000/reviews/`;
+  const submitReviewEndpoint = `https://natures-paradise-stlb.onrender.com/reviews/`;
   // Extract room_id from the URL
   const roomId = new URLSearchParams(window.location.search).get("room_id");
-  const reviewsEndpoint = `http://127.0.0.1:8000/reviews/?room_id=${roomId}`;
+  const reviewsEndpoint = `https://natures-paradise-stlb.onrender.com/reviews/?room_id=${roomId}`;
   console.log("Extracted room_id:", roomId);
   const token = localStorage.getItem("token");
   function fetchReviews() {

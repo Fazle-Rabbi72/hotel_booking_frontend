@@ -11,6 +11,7 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="../CSS/registration.css" />
     <title>Register</title>
@@ -46,6 +47,11 @@
               <li class="nav-item">
                 <a class="nav-link" href="/#contact-us">Contact</a>
               </li>
+              <button class="btn button btn-secondary ms-2">
+                <a style="color: black;" href="/HTML/login.html">
+                  <i class="fa-solid fa-right-to-bracket icon" style="color: black;"></i> Login
+                </a>
+              </button>
             </ul>
           </div>
         </div>
@@ -53,7 +59,7 @@
     </header>
 
     <main>
-      <div class="register-container bg-light">
+      <div class="register-container mt-5 mb-5 p-3 bg-light">
         <h3 class="text-center mb-4">Register</h3>
         <p class="text-danger" id="error"></p>
         <form id="registerForm" onsubmit="handelRegistration(event)">
@@ -144,40 +150,42 @@
           <div class="col-md-3">
             <h5>Quick Links</h5>
             <ul class="list-unstyled">
-              <li><a href="/#rooms-section">Rooms</a></li>
-              <li><a href="#">Bookings</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">FAQs</a></li>
+              <li><a class="text-white" href="/#rooms-section">Rooms</a></li>
+              <li><a class="text-white"  href="#">Bookings</a></li>
+              <li><a class="text-white"  href="#">Privacy Policy</a></li>
+              <li><a class="text-white"  href="#">FAQs</a></li>
             </ul>
           </div>
           <div class="col-md-3">
-            <a href="/#contact-us"><h5>Contact Us</h5></a>
+            <a class="text-white"  href="/#contact-us"><h5>Contact Us</h5></a>
             <ul class="list-unstyled">
               <li><i class="ri-map-pin-line"></i> Dhaka, Bangladesh</li>
               <li><i class="ri-mail-line"></i> naturesparadise@gmail.com</li>
-              <li><i class="ri-phone-line"></i> +880123456789</li>
+              <li><i class="ri-phone-line"></i> +880173456789</li>
             </ul>
           </div>
           <div class="col-md-3">
             <h5>Follow Us</h5>
             <ul class="list-inline">
               <li class="list-inline-item">
-                <a href="#" class="text-light"><i class="ri-facebook-circle-fill"></i></a>
+                <a href="#" style="color: #3b5998;"><i class="ri-facebook-circle-fill" style="font-size: 30px;"></i></a>
               </li>
               <li class="list-inline-item">
-                <a href="#" class="text-light"><i class="ri-instagram-fill"></i></a>
+                <a href="#" style="color: #E4405F;"><i class="ri-instagram-fill" style="font-size: 30px;"></i></a>
               </li>
               <li class="list-inline-item">
-                <a href="#" class="text-light"><i class="ri-twitter-fill"></i></a>
+                <a href="#" style="color: #1DA1F2;"><i class="ri-twitter-fill" style="font-size: 30px;"></i></a>
               </li>
               <li class="list-inline-item">
-                <a href="#" class="text-light"><i class="ri-youtube-fill"></i></a>
+                <a href="#" style="color: #FF0000;"><i class="ri-youtube-fill" style="font-size: 30px;"></i></a>
               </li>
+               
             </ul>
           </div>
         </div>
       </div>
     </footer>
+
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"

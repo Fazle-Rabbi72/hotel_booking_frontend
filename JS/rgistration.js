@@ -22,7 +22,7 @@ const handelRegistration = (event) => {
       )
     ) {
       console.log(info);
-      fetch("http://127.0.0.1:8000/register/", {
+      fetch("https://natures-paradise-stlb.onrender.com/register/", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(info),

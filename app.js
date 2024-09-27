@@ -2,11 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const roomsList = document.getElementById("rooms-list");
   const paginationControls = document.getElementById("pagination-controls");
   let currentPage = 1;
-  const itemsPerPage = 30;
+  const itemsPerPage = 18;
 
   // Function to fetch rooms based on the current page
   const fetchRooms = (page) => {
-    fetch(`http://127.0.0.1:8000/rooms/?page=${page}&limit=${itemsPerPage}`)
+    fetch(`https://natures-paradise-stlb.onrender.com/rooms/?page=${page}&limit=${itemsPerPage}`)
       .then((response) => response.json())
       .then((data) => {
         const rooms = data.results; // Assuming the API returns a 'results' field for the rooms
@@ -126,7 +126,7 @@ const searchRoom = (event) => {
   }
 
   // Send the POST request to the check availability API
-  fetch("http://127.0.0.1:8000/rooms/check_availability/", {
+  fetch("https://natures-paradise-stlb.onrender.com/rooms/check_availability/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -194,11 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const token = localStorage.getItem("token"); // Adjust based on how you store the token
 
   // Fetch reviews from the API with authentication
-  fetch("http://127.0.0.1:8000/reviews/", {
-    headers: {
-      Authorization: `Token ${token}`, // Send the token in the Authorization header
-    },
-  })
+  fetch("https://natures-paradise-stlb.onrender.com/reviews/")
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -264,7 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     // Send the data to the server
-    fetch("http://127.0.0.1:8000/contact_us/", {
+    fetch("https://natures-paradise-stlb.onrender.com/contact_us/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

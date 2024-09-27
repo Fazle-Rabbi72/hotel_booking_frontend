@@ -1,6 +1,6 @@
 // Fetch booking data from the API
 const userId = localStorage.getItem("user_id");
-fetch(`http://127.0.0.1:8000/bookings/?user_id=${userId}`)
+fetch(`https://natures-paradise-stlb.onrender.com/bookings/?user_id=${userId}`)
   .then((response) => response.json())
   .then((bookings) => {
     const tableBody = document.getElementById("booking-history-table");
@@ -72,7 +72,7 @@ fetch(`http://127.0.0.1:8000/bookings/?user_id=${userId}`)
 // Function to cancel a booking
 function cancelBooking(bookingId) {
   // Fetch the current booking details first
-  fetch(`http://127.0.0.1:8000/bookings/${bookingId}/`)
+  fetch(`https://natures-paradise-stlb.onrender.com/bookings/${bookingId}/`)
     .then((response) => response.json())
     .then((data) => {
       const updatedData = {
@@ -83,7 +83,7 @@ function cancelBooking(bookingId) {
         check_out_date: data.check_out_date,
       };
 
-      return fetch(`http://127.0.0.1:8000/bookings/${bookingId}/`, {
+      return fetch(`https://natures-paradise-stlb.onrender.com/bookings/${bookingId}/`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

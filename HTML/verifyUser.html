@@ -45,7 +45,7 @@
       // Check if uid and token exist
       if (uid && token) {
         // Send a GET request to Django backend to verify the user
-        fetch(`http://127.0.0.1:8000/register/active/${uid}/${token}/`, {
+        fetch(`https://natures-paradise-stlb.onrender.com/register/active/${uid}/${token}/`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

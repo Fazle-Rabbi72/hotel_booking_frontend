@@ -1,7 +1,7 @@
 const fetchUserData = async () => {
   const userId = localStorage.getItem("user_id");
   try {
-    const response = await fetch(`http://127.0.0.1:8000/users/${userId}/`);
+    const response = await fetch(`https://natures-paradise-stlb.onrender.com/users/${userId}/`);
     const data = await response.json();
     console.log("email",data.email);
 
@@ -38,7 +38,7 @@ document.getElementById("deposit-form").addEventListener("submit", async functio
   }
 
   try {
-      const response = await fetch("http://127.0.0.1:8000/deposit/", {
+      const response = await fetch("https://natures-paradise-stlb.onrender.com/deposit/", {
           method: "POST",
           headers: {
               "Content-Type": "application/json",
@@ -80,7 +80,7 @@ document
 
     console.log({ username, firstName, lastName, email });
     try {
-      const response = await fetch(`http://127.0.0.1:8000/users/${userId}/`, {
+      const response = await fetch(`https://natures-paradise-stlb.onrender.com/users/${userId}/`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
