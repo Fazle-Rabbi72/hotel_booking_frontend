@@ -100,7 +100,7 @@ const roomBooking = (event) => {
           if (!response.ok) {
             return response.json().then((errorData) => {
            
-              alert(errorData.error || "An error occurred while booking.");
+              alert(errorData.error || "Only logged in user make booking!.");
               throw new Error("Failed to create booking");
             });
           }
