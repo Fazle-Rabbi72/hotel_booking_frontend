@@ -37,7 +37,7 @@
     </div>
 
     <script>
-      // Extract 'uid' and 'token' from URL query string
+      
       const urlParams = new URLSearchParams(window.location.search);
       const uid = urlParams.get("uid");
       const token = urlParams.get("token");
@@ -54,7 +54,7 @@
           .then((response) => response.json())
           .then((data) => {
             if (data.success) {
-              alert("User verified successfully!");
+              alert("User verified successfully! An activation mail has also been sent to your account!");
               window.location.href = "../HTML/login.html"; // Redirect to home page
             } else {
               alert("Verification failed.");
